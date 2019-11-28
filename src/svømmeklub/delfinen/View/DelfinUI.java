@@ -27,6 +27,15 @@ public class DelfinUI {
             System.out.println("  9. Tilbage til start menuen");
             System.out.println("************************************************");
         }
+    // 2. Hold:
+        public void showHold(){
+            System.out.println("************************************************");
+            System.out.println("Hold");
+            System.out.println("  1. Ungdomsholdet (Hold 1)");
+            System.out.println("  2. Seniorholdet (Hold 2)");
+            System.out.println("  9. Tilbage til start menuen");
+            System.out.println("************************************************");
+        }
         
 // Medlem:    
     public void viewMedlemsList(AlleMedlemmer medlemmer){

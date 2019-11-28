@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import svømmeklub.delfinen.Model.Hold;
 import svømmeklub.delfinen.Model.Medlem;
 import svømmeklub.delfinen.Util.DBConnector;
 
@@ -50,7 +51,7 @@ public class MedlemsMapper {
     public Medlem getMedlemFromDBById(int id) throws ClassNotFoundException, SQLException {
         Medlem retValMedlem = null;
      // TODO: Get movie from DB
-        String query = "Select * from menu where Id = ?";
+        String query = "Select * from medlemmer where Id = ?";
         DBConnector myConnector = new DBConnector();  
         myConnector = null;
         PreparedStatement pstmt = null;
@@ -62,7 +63,7 @@ public class MedlemsMapper {
      // Så burde der være kommet et resultSet tilbage:
         resultSet = pstmt.executeQuery();
         while(resultSet.next()){
-           String navn = resultSet.getString("Navn");
+            String navn = resultSet.getString("Navn");
             int alder = resultSet.getInt("Alder");
             int år = resultSet.getInt("År");
             String adresse = resultSet.getString("Adresse");
