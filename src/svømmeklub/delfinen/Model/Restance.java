@@ -7,10 +7,15 @@ import java.util.List;
 public class Restance {
 
     public List<Medlem> restance;
+    String navn;
+    int mobilNr;
+    int beløb;
 
-// Konstruktor:
-    public Restance() {
+    public Restance(String navn, int mobilNr, int beløb) {
         restance = new ArrayList<>();
+        this.navn = navn;
+        this.mobilNr = mobilNr;
+        this.beløb = beløb;
     }
     
 // Gettere:
@@ -28,7 +33,7 @@ public class Restance {
     }
     
     public void seRestance(){
-        System.out.println(restance);
+        System.out.println(restance.size());
     }
         
     

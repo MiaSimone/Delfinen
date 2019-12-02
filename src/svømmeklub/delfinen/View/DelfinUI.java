@@ -2,10 +2,11 @@
 package svømmeklub.delfinen.View;
 
 import java.sql.SQLException;
+import svømmeklub.delfinen.Interfaces.Tilbage;
 import svømmeklub.delfinen.Model.AlleMedlemmer;
 import svømmeklub.delfinen.Model.Medlem;
 
-public class DelfinUI {
+public abstract class DelfinUI implements Tilbage{
     // Main Menu:
         public void showMainMenu(){
             System.out.println("************************************************");
@@ -24,7 +25,7 @@ public class DelfinUI {
             System.out.println("Medlemmer");
             System.out.println("  1. Opret medlem");
             System.out.println("  2. Se medlemmer");
-            System.out.println("  9. Tilbage til start menuen");
+            tilbage();
             System.out.println("************************************************");
         }
     // 2. Hold:
@@ -33,8 +34,74 @@ public class DelfinUI {
             System.out.println("Hold");
             System.out.println("  1. Ungdomsholdet (Hold 1)");
             System.out.println("  2. Seniorholdet (Hold 2)");
-            System.out.println("  9. Tilbage til start menuen");
+            tilbage();
             System.out.println("************************************************");
+        }
+    // 3. Resultater:
+        public void showResultatMenu(){
+            System.out.println("************************************************");
+            System.out.println("Resultater");
+            System.out.println("  1. Stævner");
+            System.out.println("  2. Træningsresultater");
+            tilbage();
+            System.out.println("************************************************");
+        }
+        public void showStævner(){
+            System.out.println("************************************************");
+            System.out.println("Stævner");
+            System.out.println("  1. Vinterstævne 2019");
+            System.out.println("  2. Lyngby cup 2019");
+            System.out.println("  3. Sommerstævne 2019");
+            System.out.println("  4. Efterårsstævne 2019");
+            tilbage();
+            System.out.println("************************************************");
+        }
+            public void vinter(){
+                System.out.println("************************************************");
+                System.out.println("Vinterstævne 2019");
+                dicipliner();
+                tilbage();
+                System.out.println("************************************************");
+            }
+            public void LC(){
+                System.out.println("************************************************");
+                System.out.println("Lyngby cup 2019");
+                dicipliner();
+                tilbage();
+                System.out.println("************************************************");
+            }
+            public void sommer(){
+                System.out.println("************************************************");
+                System.out.println("Sommerstævne 2019");
+                dicipliner();
+                tilbage();
+                System.out.println("************************************************");
+            }
+            public void efterår(){
+                System.out.println("************************************************");
+                System.out.println("Efterårsstævne 2019");
+                dicipliner();
+                tilbage();
+                System.out.println("************************************************");
+            }
+            
+        public void showTræningsResultater(){
+            System.out.println("************************************************");
+            System.out.println("Træningsresultater");
+            dicipliner();
+            System.out.println("  5. Indtast resultater");
+            tilbage();
+            System.out.println("************************************************");
+        }
+        
+        public void dicipliner(){
+            System.out.println("  1. Resultater for Crawl");
+            System.out.println("  2. Resultater for Ryg");
+            System.out.println("  3. Resultater for Butterfly");
+            System.out.println("  4. Resultater for Bryst");
+        }
+        public void tilbage(){
+            System.out.println("  9. Gå tilbage");
         }
         
 // Medlem:    
