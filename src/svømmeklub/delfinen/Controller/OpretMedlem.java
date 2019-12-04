@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.Scanner;
 import svømmeklub.delfinen.Model.AlleMedlemmer;
 import svømmeklub.delfinen.Model.Medlem;
+import svømmeklub.delfinen.Model.Restance;
 import svømmeklub.delfinen.Util.DBConnector;
 
 public class OpretMedlem {
@@ -109,18 +110,23 @@ public class OpretMedlem {
                     
                 System.out.println("Aktivt eller passivt medlemskab: ");
                     String A_eller_P = input.nextLine();
+                    int beløb;
                     if ("Aktivt".equals(A_eller_P)){
                         if (alder>=0 && alder<18){
                             System.out.println("Det koster 1000 kr.");
+                            beløb = 1000;
                         } else if (alder>=18 && alder<60){
-                        System.out.println("Det koster 1600 kr.");
+                            System.out.println("Det koster 1600 kr.");
+                            beløb = 1600;
                         } else if (alder>=60 && alder<100){
-                        System.out.println("Du får 25 % rabat, altså koster det 1200 kr");
+                            System.out.println("Du får 25 % rabat, altså koster det 1200 kr");
+                            beløb = 1200;
                         } else {
                             throw new IllegalArgumentException();  
                         }
                     } else if ("Passivt".equals(A_eller_P)) {
                         System.out.println("Medlemskabet er passivt, det koster 500 kr");
+                        beløb = 500;
                     } else {
                         throw new IllegalArgumentException();
                     }
@@ -140,8 +146,8 @@ public class OpretMedlem {
                         }
                     } else {
                         Medlem medlem = new Medlem(navn, alder, år, adresse, postNr_By, mobilNr, J_eller_S, A_eller_P, beskæftigelse);
-                        //Restance res = new Restance();
-                        //res.addMedlemTilRestance(medlem);
+                        Restance res = new Restance(navn, mobilNr,beløb);
+                        res.addMedlemTilRestance(medlem);
                     }   
                     
                     pstmt.executeUpdate();

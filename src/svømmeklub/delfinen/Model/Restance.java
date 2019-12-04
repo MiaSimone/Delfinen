@@ -3,10 +3,12 @@ package svømmeklub.delfinen.Model;
 
 import java.util.ArrayList;
 import java.util.List;
+import svømmeklub.delfinen.DataMappers.RestanceMapper;
 
 public class Restance {
-
+    RestanceMapper res = new RestanceMapper();
     public List<Medlem> restance;
+    public List<Medlem> samletRes;
     String navn;
     int mobilNr;
     int beløb;
@@ -34,6 +36,14 @@ public class Restance {
     
     public void seRestance(){
         System.out.println(restance.size());
+    }
+    
+    @Override
+    public String toString() {
+        String mellemrum = "\n";
+        return "Navn: " + navn + "\n" +
+               "MobilNr: " + mobilNr + "\n" + 
+               "Restance: " + beløb + "\n" + mellemrum + mellemrum;
     }
         
     

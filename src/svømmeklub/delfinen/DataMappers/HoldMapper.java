@@ -31,8 +31,8 @@ public class HoldMapper {
             int alder = resultSet.getInt("Alder");
             String j_eller_s = resultSet.getString("Junior_eller_seniorsvømmer");
             String disciplin = resultSet.getString("Disciplin");
-            Hold tmpHold = new Hold(navn, alder, j_eller_s, disciplin);
-            returnList.add(tmpHold);
+            Hold tmpHold1 = new Hold(navn, alder, j_eller_s, disciplin);
+            returnList.add(tmpHold1);
         }
             
      // Lukker efter mig:
@@ -63,8 +63,8 @@ public class HoldMapper {
             int alder = resultSet.getInt("Alder");
             String j_eller_s = resultSet.getString("Junior_eller_seniorsvømmer");
             String disciplin = resultSet.getString("Disciplin");
-            Hold tmpHold = new Hold(navn, alder, j_eller_s, disciplin);
-            returnList.add(tmpHold);
+            Hold tmpHold2 = new Hold(navn, alder, j_eller_s, disciplin);
+            returnList.add(tmpHold2);
         }
             
      // Lukker efter mig:

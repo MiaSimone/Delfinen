@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import svømmeklub.delfinen.Model.Hold;
 import svømmeklub.delfinen.Model.Medlem;
 import svømmeklub.delfinen.Util.DBConnector;
 

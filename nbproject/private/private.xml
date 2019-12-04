@@ -9,15 +9,13 @@
             <file>file:/C:/Users/miade/Documents/NetBeansProjects/Svømmeklub-Delfinen/src/svømmeklub/delfinen/Model/AlleMedlemmer.java</file>
             <file>file:/C:/Users/miade/Documents/NetBeansProjects/Svømmeklub-Delfinen/src/svømmeklub/delfinen/Model/Medlem.java</file>
             <file>file:/C:/Users/miade/Documents/NetBeansProjects/Svømmeklub-Delfinen/src/svømmeklub/delfinen/SvømmeklubDelfinen.java</file>
-            <file>file:/C:/Users/miade/Documents/NetBeansProjects/Svømmeklub-Delfinen/src/svømmeklub/delfinen/View/Holdoversigt.java</file>
             <file>file:/C:/Users/miade/Documents/NetBeansProjects/Svømmeklub-Delfinen/src/svømmeklub/delfinen/Controller/Controller.java</file>
             <file>file:/C:/Users/miade/Documents/NetBeansProjects/Svømmeklub-Delfinen/src/svømmeklub/delfinen/Model/Hold.java</file>
             <file>file:/C:/Users/miade/Documents/NetBeansProjects/Svømmeklub-Delfinen/src/svømmeklub/delfinen/Model/Restance.java</file>
             <file>file:/C:/Users/miade/Documents/NetBeansProjects/Svømmeklub-Delfinen/src/svømmeklub/delfinen/DataMappers/RestanceMapper.java</file>
             <file>file:/C:/Users/miade/Documents/NetBeansProjects/Svømmeklub-Delfinen/src/svømmeklub/delfinen/View/DelfinUI.java</file>
-            <file>file:/C:/Users/miade/Documents/NetBeansProjects/Svømmeklub-Delfinen/src/svømmeklub/delfinen/View/Resultater.java</file>
+            <file>file:/C:/Users/miade/Documents/NetBeansProjects/Svømmeklub-Delfinen/src/svømmeklub/delfinen/Util/DBConnector.java</file>
             <file>file:/C:/Users/miade/Documents/NetBeansProjects/Svømmeklub-Delfinen/src/svømmeklub/delfinen/DataMappers/MedlemsMapper.java</file>
-            <file>file:/C:/Users/miade/Documents/NetBeansProjects/Svømmeklub-Delfinen/src/svømmeklub/delfinen/Controller/OpretMedlem.java</file>
         </group>
     </open-files>
 </project-private>

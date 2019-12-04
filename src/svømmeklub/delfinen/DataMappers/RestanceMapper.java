@@ -6,14 +6,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 import svømmeklub.delfinen.Model.Restance;
 import svømmeklub.delfinen.Util.DBConnector;
 
 public class RestanceMapper {
     
         
-    public ArrayList<Restance> resListe() throws SQLException, ClassNotFoundException{
-        ArrayList<Restance> returnList = new ArrayList<Restance>();
+    public List<Restance> resListe() throws SQLException, ClassNotFoundException{
+        List<Restance> returnList = new ArrayList<Restance>();
         DBConnector myConnector = new DBConnector();
 
      // TODO: hent fra databasen
@@ -29,8 +30,8 @@ public class RestanceMapper {
             //executeUpdate
         while (resultSet.next()){
             String navn = resultSet.getString("Navn");
-            int mobilNr = resultSet.getInt("mobilNr");
-            int beløb = resultSet.getInt("beløb");
+            int mobilNr = resultSet.getInt("MobilNr");
+            int beløb = resultSet.getInt("Beløb");
             Restance tmpRes = new Restance(navn, mobilNr, beløb);
             returnList.add(tmpRes);
         }

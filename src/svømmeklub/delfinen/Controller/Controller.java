@@ -1,18 +1,10 @@
 
 package svømmeklub.delfinen.Controller;
 
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.Scanner;
-import svømmeklub.delfinen.DataMappers.MedlemsMapper;
-import svømmeklub.delfinen.DataMappers.HoldMapper;
-import svømmeklub.delfinen.DataMappers.RestanceMapper;
-import svømmeklub.delfinen.Interfaces.Tilbage;
 import svømmeklub.delfinen.Menuer.Menuer;
 import svømmeklub.delfinen.Model.AlleMedlemmer;
-import svømmeklub.delfinen.Model.Medlem;
-import svømmeklub.delfinen.Model.Restance;
-import svømmeklub.delfinen.Util.DBConnector;
 import svømmeklub.delfinen.View.DelfinUI;
 
 // public abstract class Controller implements Tilbage 
@@ -43,11 +35,13 @@ public class Controller {
                 case 3:
                     m.valg3();
                     break;
+                    
         // Resultater:            
                 case 4:
                     m.valg4();
                     break;
-                  default:
+                    
+                default:
                     System.out.println("");
                     choice = 9;
             }
