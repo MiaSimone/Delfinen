@@ -109,13 +109,15 @@ public class OpretMedlem {
                     
                 System.out.println("Mobilnummer: ");
                     int mobilNr = input.nextInt();
+                    input.nextLine();
                     pstmt.setInt(6, mobilNr);
                     
 
                 
                     
                 System.out.println("Beskæftigelse: ");
-                    String beskæftigelse = input.nextLine().toLowerCase();
+                String beskæftigelse;
+                beskæftigelse = input.nextLine().toLowerCase();
                         if ("konkurrence".equals(beskæftigelse) && alder<=18){
 
                 
