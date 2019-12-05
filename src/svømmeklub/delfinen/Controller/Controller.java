@@ -20,12 +20,14 @@ public class Controller {
     public void runProgram() throws SQLException, ClassNotFoundException{
         int choice = 0;
         int exitValue = 9;
+        boolean quit = false;
         
         while (choice != exitValue){
             switch(choice) {
         // Medlemmer:        
                 case 1:
                     m.valg1();
+                    
                     break;
         // Hold:            
                 case 2:
@@ -44,6 +46,7 @@ public class Controller {
                 default:
                     System.out.println("");
                     choice = 9;
+                    break;
             }
         // Initialiser hovedmenu
            menuer.showMainMenu();

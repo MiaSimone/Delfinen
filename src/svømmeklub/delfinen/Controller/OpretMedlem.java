@@ -3,6 +3,7 @@ package svømmeklub.delfinen.Controller;
 
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.Calendar;
 import java.util.Scanner;
 import svømmeklub.delfinen.Model.AlleMedlemmer;
 import svømmeklub.delfinen.Model.Medlem;
@@ -58,7 +59,7 @@ public class OpretMedlem {
         pstmt4 = myConnector.getConnector().prepareStatement(sql4);
  // Samlede tider:       
         String sql5 = "insert into samlede_tider"
-                + "(Navn, Junior_el._Senior,Disciplin) "
+                + "(Navn, Junior_eller_Senior,Disciplin) "
                 + "values(?, ?, ?)";
         pstmt5 = myConnector.getConnector().prepareStatement(sql5);        
  // Træningsresultater:       
@@ -85,9 +86,16 @@ public class OpretMedlem {
                     } else{
                     pstmt.setInt(2, alder);
                     }
+                String J_eller_S;
+                    if (alder < 18){
+                        J_eller_S = "Junior";
+                    } else {
+                        J_eller_S = "Senior";
+                    }
+                    pstmt.setString(7, J_eller_S);     
                     
-                System.out.println("År: ");
-                    int år = input.nextInt();
+                    int year = Calendar.getInstance().get(Calendar.YEAR);
+                    int år = (year - alder);
                     pstmt.setInt(3, år);
                     
                 System.out.println("Adresse: ");
@@ -103,14 +111,15 @@ public class OpretMedlem {
                     int mobilNr = input.nextInt();
                     pstmt.setInt(6, mobilNr);
                     
-                System.out.println("Junior- eller seniorsvømmer: ");
-                    input.nextLine();
-                    String J_eller_S = input.nextLine().toLowerCase();
-                    pstmt.setString(7, J_eller_S);
+
+                
                     
                 System.out.println("Beskæftigelse: ");
                     String beskæftigelse = input.nextLine().toLowerCase();
                         if ("konkurrence".equals(beskæftigelse) && alder<=18){
+
+                
+
                             System.out.println("Hvilken disciplin svømmer du: \n   (Crawl, Ryg, Butterfly eller Bryst)");
                             String disciplin = input.nextLine();
                             disciplin = disciplin.substring(0,1).toUpperCase()+disciplin.substring(1).toLowerCase();
@@ -190,12 +199,14 @@ public class OpretMedlem {
                 System.out.println("Vil du betale nu eller senere? (N/S)");
                     String betal = input.nextLine().toUpperCase();
                     if ("N".equals(betal)){
-                        if (alder>=0 && alder<18){
+                        if ("Aktivt".equals(A_eller_P) && alder>=0 && alder<18){
                            System.out.println("Du har nu betalt 1000 kr."); 
-                        } else if (alder>=18 && alder<60){
+                        } else if ("Aktivt".equals(A_eller_P) && alder>=18 && alder<60){
                            System.out.println("Du har nu betalt 1600 kr.");  
-                        } else if (alder>=60 && alder<100){
+                        } else if ("Aktivt".equals(A_eller_P) && alder>=60 && alder<100){
                            System.out.println("Du har nu betalt 1200 kr.");  
+                        } else if ("Passivt".equals(A_eller_P)){
+                            System.out.println("Du har nu betalt 500 kr.");
                         } else {
                             throw new IllegalArgumentException();  
                         }
@@ -214,10 +225,12 @@ public class OpretMedlem {
                     pstmt.executeUpdate();
                     pstmt.close();
                     break;
+                        
             } catch (Exception e) {
                     e.printStackTrace(System.out);
             }
             } 
         return medlemmer;
     }
+
 }
