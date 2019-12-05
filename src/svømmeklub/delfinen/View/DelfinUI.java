@@ -5,8 +5,6 @@ import java.sql.SQLException;
 import svømmeklub.delfinen.Interfaces.Tilbage;
 import svømmeklub.delfinen.Model.AlleMedlemmer;
 import svømmeklub.delfinen.Model.Medlem;
-import svømmeklub.delfinen.Model.Stævne;
-import svømmeklub.delfinen.Util.StævnerFromDB;
 
 public abstract class DelfinUI implements Tilbage{
     // Main Menu:
@@ -55,26 +53,6 @@ public abstract class DelfinUI implements Tilbage{
             System.out.println("Top 5");
             System.out.println("  1. Junior");
             System.out.println("  2. Senior");
-            System.out.println("************************************************");
-        }
-        /* Måske kan man lave et while loop istedet?
-            public void junior(){
-                System.out.println("************************************************");
-                discipliner();
-                tilbage();
-                System.out.println("************************************************");
-            }
-            public void senior(){
-                System.out.println("************************************************");
-                discipliner();
-                tilbage();
-                System.out.println("************************************************");
-            }
-        */
-        public void showStævner(){
-            System.out.println("************************************************");
-            System.out.println("Stævner");
-            // Hvad her?
             tilbage();
             System.out.println("************************************************");
         }
@@ -88,14 +66,6 @@ public abstract class DelfinUI implements Tilbage{
             System.out.println("************************************************");
         }
         
-        
-        
-            public void discipliner(){
-                System.out.println("  1. Resultater for Crawl");
-                System.out.println("  2. Resultater for Ryg");
-                System.out.println("  3. Resultater for Butterfly");
-                System.out.println("  4. Resultater for Bryst");
-            }
             public void tilbage(){
                 System.out.println("  9. Gå tilbage");
             }
@@ -115,18 +85,6 @@ public abstract class DelfinUI implements Tilbage{
         System.out.println("Medlem: " + medlem);
     }  
     
-    public void viewVinterstævneList(StævnerFromDB v) throws SQLException, ClassNotFoundException{
-        for (Stævne s: v.getStævne()){
-            System.out.println("Test: " + s.toString());
-            
-        }
-    }    
-    
-    public void viewStævneByName() throws ClassNotFoundException, SQLException {
-        Stævne stævne = null;
-        StævnerFromDB sm = new StævnerFromDB();
-        stævne = sm.getStævneFromDBByName();
-        System.out.println(stævne);
-    }    
+   
     
 }

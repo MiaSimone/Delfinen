@@ -7,6 +7,7 @@ import java.util.Scanner;
 import svømmeklub.delfinen.Model.AlleMedlemmer;
 import svømmeklub.delfinen.Model.Medlem;
 import svømmeklub.delfinen.Model.Restance;
+import svømmeklub.delfinen.Model.RestanceList;
 import svømmeklub.delfinen.Util.DBConnector;
 
 public class OpretMedlem {
@@ -15,6 +16,8 @@ public class OpretMedlem {
     Scanner input = new Scanner(System.in);  
     // Laver alle medlemmer objekt:
     public AlleMedlemmer medlemmer;
+    // Restance list:
+    RestanceList resList = new RestanceList();
     
     public AlleMedlemmer opretMedlem() throws SQLException, ClassNotFoundException{
         medlemmer = new AlleMedlemmer();
@@ -24,24 +27,47 @@ public class OpretMedlem {
         PreparedStatement pstmt = null;
         PreparedStatement pstmt1 = null;
         PreparedStatement pstmt2 = null;
-        
+        PreparedStatement pstmt3 = null;
+        PreparedStatement pstmt4 = null;
+        PreparedStatement pstmt5 = null;
+        PreparedStatement pstmt6 = null;
+ // Medlemmer:       
         String sql = "insert into medlemmer"
                 + "(Navn, Alder, År, Adresse, postNr_By, MobilNr, Junior_eller_seniorsvømmer, Aktivt_eller_Passivt, Beskæftigelse) "
                 + "values(?, ?, ?, ?, ?, ?, ?, ?, ?)";
         pstmt = myConnector.getConnector().prepareStatement(sql);
-        
+ // Hold1:       
         String sql1 = "insert into hold1"
                 + "(Navn, Alder, Junior_eller_seniorsvømmer, Disciplin) "
                 + "values(?, ?, ?, ?) ";
         pstmt1 = myConnector.getConnector().prepareStatement(sql1);
-        
+ // Hold2:       
         String sql2 = "insert into hold2"
                 + "(Navn, Alder, Junior_eller_seniorsvømmer, Disciplin) "
                 + "values(?, ?, ?, ?)";
-        
         pstmt2 = myConnector.getConnector().prepareStatement(sql2);
+ // Restance:       
+        String sql3 = "insert into restance"
+                + "(Navn, MobilNr, Beløb) "
+                + "values(?, ?, ?)";
+        pstmt3 = myConnector.getConnector().prepareStatement(sql3);
+ // Disciplin:       
+        String sql4 = "insert into disciplin"
+                + "(Navn, Disciplin) "
+                + "values(?, ?)";
+        pstmt4 = myConnector.getConnector().prepareStatement(sql4);
+ // Samlede tider:       
+        String sql5 = "insert into samlede_tider"
+                + "(Navn, Junior_el._Senior,Disciplin) "
+                + "values(?, ?, ?)";
+        pstmt5 = myConnector.getConnector().prepareStatement(sql5);        
+ // Træningsresultater:       
+        String sql6 = "insert into trænings_resultater"
+                + "(Navn, Disciplin) "
+                + "values(?, ?)";
+        pstmt6 = myConnector.getConnector().prepareStatement(sql6);  
+
         
-        //input.nextLine();
      // Vi har et loop så vi kan lave flere medlemmer af gangen
         System.out.println("Vil du oprette medlem? (Y/N)");
         lavMedlem = input.next();
@@ -88,23 +114,49 @@ public class OpretMedlem {
                             System.out.println("Hvilken disciplin svømmer du: \n   (Crawl, Ryg, Butterfly eller Bryst)");
                             String disciplin = input.nextLine();
                             pstmt1.setString(1, navn);
+                                pstmt4.setString(1, navn);
+                                pstmt5.setString(1, navn);
+                                pstmt6.setString(1, navn);
                             pstmt1.setInt(2, alder);
                             pstmt1.setString(3, J_eller_S);
+                                pstmt5.setString(2, J_eller_S);
                             pstmt1.setString(4, disciplin);
+                                pstmt4.setString(2, disciplin);
+                                pstmt5.setString(3, disciplin);
+                                pstmt6.setString(2, disciplin);
 
                             pstmt1.executeUpdate();
+                                pstmt4.executeUpdate();
+                                pstmt5.executeUpdate();
+                                pstmt6.executeUpdate();
                             pstmt1.close();
+                                pstmt4.close();
+                                pstmt5.close();
+                                pstmt6.close();
                             
                         } else if ("Konkurrence".equals(beskæftigelse) && alder>18){
                             System.out.println("Hvilken disciplin svømmer du: \n   (Crawl, Ryg, Butterfly eller Bryst)");
                             String disciplin = input.nextLine();
                             pstmt2.setString(1, navn);
+                                pstmt4.setString(1, navn);
+                                pstmt5.setString(1, navn);
+                                pstmt6.setString(1, navn);
                             pstmt2.setInt(2, alder);
                             pstmt2.setString(3, J_eller_S);
+                                pstmt5.setString(2, J_eller_S);
                             pstmt2.setString(4, disciplin);
+                                pstmt4.setString(2, disciplin);
+                                pstmt5.setString(3, disciplin);
+                                pstmt6.setString(2, disciplin);
 
                             pstmt2.executeUpdate();
+                                pstmt4.executeUpdate();
+                                pstmt5.executeUpdate();
+                                pstmt6.executeUpdate();
                             pstmt2.close();
+                                pstmt4.close();
+                                pstmt5.close();
+                                pstmt6.close();
                         } 
                     pstmt.setString(9, beskæftigelse);
                     
@@ -145,16 +197,22 @@ public class OpretMedlem {
                             throw new IllegalArgumentException();  
                         }
                     } else {
-                        Medlem medlem = new Medlem(navn, alder, år, adresse, postNr_By, mobilNr, J_eller_S, A_eller_P, beskæftigelse);
+                        //Medlem medlem = new Medlem(navn, alder, år, adresse, postNr_By, mobilNr, J_eller_S, A_eller_P, beskæftigelse);
                         Restance res = new Restance(navn, mobilNr,beløb);
-                        res.addMedlemTilRestance(medlem);
+                        resList.addMedlemTilRestance(res);
+                        pstmt3.setString(1, navn);
+                        pstmt3.setInt(2, mobilNr);
+                        pstmt3.setInt(3, beløb);
+                        pstmt3.executeUpdate();
+                        pstmt3.close();
+                        System.out.println("Du er nu på restance listen");
                     }   
                     
                     pstmt.executeUpdate();
                     pstmt.close();
                     break;
             } catch (Exception e) {
-                    System.out.println("Noget gik galt.");
+                    e.printStackTrace(System.out);
             }
             } 
         return medlemmer;

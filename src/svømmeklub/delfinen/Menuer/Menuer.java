@@ -4,11 +4,11 @@ package svømmeklub.delfinen.Menuer;
 import java.sql.SQLException;
 import java.util.Scanner;
 import svømmeklub.delfinen.Controller.OpretMedlem;
+import svømmeklub.delfinen.Controller.Rediger_træningsresultater;
 import svømmeklub.delfinen.DataMappers.HoldMapper;
 import svømmeklub.delfinen.DataMappers.MedlemsMapper;
 import svømmeklub.delfinen.DataMappers.RestanceMapper;
-import svømmeklub.delfinen.DataMappers.StævneMapper;
-import svømmeklub.delfinen.Util.StævnerFromDB;
+import svømmeklub.delfinen.DataMappers.ResultatMapper;
 import svømmeklub.delfinen.View.DelfinUI;
 
 public class Menuer {
@@ -76,7 +76,11 @@ public class Menuer {
                     while (J_eller_S != exitValue){
                         switch (J_eller_S){
                             case 1:
-                                
+                                seJuniorResultater();
+                                break;
+                            case 2:
+                                seSeniorResultater();
+                                break;
                             default:
                                 System.out.println("");
                                 choice = 9; 
@@ -87,8 +91,27 @@ public class Menuer {
                     }
                     
                     
-             // Hvis man vælger træningsresultater     
+             // Hvis man vælger stævnerresultater     
                 case 2:
+                    seStævner();
+                    break;
+             // Hvis man vælger træningsresultater        
+                case 3:
+                    int valg = 0;
+                    while (valg != exitValue){
+                        switch (valg){
+                            case 1:
+                                seTræning();
+                                break;
+                            case 2:
+                                Rediger_træningsresultater rt = new Rediger_træningsresultater();
+                                rt.rediger();
+                                break;
+                        }
+                        menuer.showTræningsResultater();
+                        System.out.println("Vælg en mulighed");
+                        valg = input.nextInt();
+                    }
                     
                 default:
                     System.out.println("");
@@ -119,11 +142,31 @@ public class Menuer {
         System.out.println(h2m.hold2Liste());
     }     
         
-        public void seRestance() throws SQLException, ClassNotFoundException{
+    public void seRestance() throws SQLException, ClassNotFoundException{
         RestanceMapper res = new RestanceMapper();
         System.out.println(res.resListe());
         //Restance res = new Restance();
         //res.seRestance();
+    }
+    
+    public void seJuniorResultater() throws SQLException, ClassNotFoundException{
+        ResultatMapper r = new ResultatMapper();
+        System.out.println(r.juniorResListe());
+    }
+    
+    public void seSeniorResultater() throws SQLException, ClassNotFoundException{
+        ResultatMapper r = new ResultatMapper();
+        System.out.println(r.seniorResListe());
+    }
+    
+    public void seStævner() throws SQLException, ClassNotFoundException{
+        ResultatMapper s = new ResultatMapper();
+        System.out.println(s.stævner());
+    }
+    
+    public void seTræning() throws SQLException, ClassNotFoundException{
+        ResultatMapper s = new ResultatMapper();
+        System.out.println(s.træning());
     }
     
 }

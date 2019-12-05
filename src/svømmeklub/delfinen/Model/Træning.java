@@ -1,18 +1,17 @@
 
 package svømmeklub.delfinen.Model;
 
-public class Stævne {
-
+public class Træning {
+    int tResID;
     String navn;
-    String stævne;
-    int placering;
+    String dato;
     String disciplin;
     double tid;
-
-    public Stævne(String navn, String stævne, int placering, String disciplin, double tid) {
+    
+    public Træning(int tResID, String navn, String dato, String disciplin, double tid) {
+        this.tResID = tResID;
         this.navn = navn;
-        this.stævne = stævne;
-        this.placering = placering;
+        this.dato = dato;
         this.disciplin = disciplin;
         this.tid = tid;
     }
@@ -20,10 +19,11 @@ public class Stævne {
     @Override
     public String toString() {
         String mellemrum = "\n";
-        return "Navn: " + navn + "\n" +
-               "Stævne: " + stævne + "\n" +
-               "Placering: " + placering + "\n" +
+        return "ID: " + tResID + "\n"+
+               "Navn: " + navn + "\n" +
+               "Dato: " + dato + "\n" +
                "Disciplin: " + disciplin + "\n"+
                "Tid: " + tid + mellemrum + mellemrum;
-    }
+    } 
+    
 }
