@@ -3,6 +3,7 @@ package svømmeklub.delfinen.Menuer;
 
 import java.sql.SQLException;
 import java.util.Scanner;
+import svømmeklub.delfinen.Controller.Controller;
 import svømmeklub.delfinen.Controller.OpretMedlem;
 import svømmeklub.delfinen.Controller.Rediger_træningsresultater;
 import svømmeklub.delfinen.DataMappers.HoldMapper;
@@ -33,6 +34,7 @@ public class Menuer {
     
 // Valg 1 i hovedmenu:
     public void valg1() throws SQLException, ClassNotFoundException{
+        int choice = 0;
         while (choice != exitValue){
         // Søg efter medlemmer?
             switch(choice){
@@ -56,7 +58,7 @@ public class Menuer {
     
 // Valg 2 i hovedmenu:
     public void valg2() throws SQLException, ClassNotFoundException{ 
-            
+            int choice = 0;
         while (choice != exitValue){
 
             switch(choice){
@@ -86,6 +88,7 @@ public class Menuer {
    
 // Valg 4 i hovedmenu:    
     public void valg4() throws ClassNotFoundException, SQLException{
+        int choice = 0;
         while (choice != exitValue){
 
             switch(choice){

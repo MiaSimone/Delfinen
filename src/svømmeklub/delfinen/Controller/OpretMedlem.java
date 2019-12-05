@@ -116,7 +116,6 @@ public class OpretMedlem {
                 String beskæftigelse;
                 beskæftigelse = input.nextLine().toLowerCase();
                         if ("konkurrence".equals(beskæftigelse) && alder<=18){
-
                             System.out.println("Hvilken disciplin svømmer du: \n   (Crawl, Ryg, Butterfly eller Bryst)");
                             String disciplin = input.nextLine();
                             disciplin = disciplin.substring(0,1).toUpperCase()+disciplin.substring(1).toLowerCase();
