@@ -19,10 +19,7 @@ public class Restance {
 
     @Override
     public String toString() {
-        String mellemrum = "\n";
-        return "Navn: " + navn + "\n" +
-               "MobilNr: " + mobilNr + "\n" + 
-               "Restance: " + beløb + "\n" + mellemrum + mellemrum;
+        return String.format("%-25s%-20d%-10d\n", navn, mobilNr, beløb);
     }
         
     

@@ -18,12 +18,7 @@ public class Træning {
 
     @Override
     public String toString() {
-        String mellemrum = "\n";
-        return "ID: " + tResID + "\n"+
-               "Navn: " + navn + "\n" +
-               "Dato: " + dato + "\n" +
-               "Disciplin: " + disciplin + "\n"+
-               "Tid: " + tid + mellemrum + mellemrum;
+        return String.format("%-7d%-25s%-20s%-20s%-15.2f\n", tResID, navn, dato, disciplin, tid);
     } 
     
 }

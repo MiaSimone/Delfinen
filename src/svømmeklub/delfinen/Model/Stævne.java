@@ -19,11 +19,6 @@ public class Stævne {
 
     @Override
     public String toString() {
-        String mellemrum = "\n";
-        return "Navn: " + navn + "\n" +
-               "Stævne: " + stævne + "\n" +
-               "Placering: " + placering + "\n" +
-               "Disciplin: " + disciplin + "\n"+
-               "Tid: " + tid + mellemrum + mellemrum;
+        return String.format("%-25s%-25s%-20d%-20s%-15.2f\n", navn, stævne, placering, disciplin, tid);
     }
 }

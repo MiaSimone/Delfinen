@@ -71,7 +71,7 @@ public class OpretMedlem {
         
      // Vi har et loop så vi kan lave flere medlemmer af gangen
         System.out.println("Vil du oprette medlem? (Y/N)");
-        lavMedlem = input.next();
+        lavMedlem = input.next().toUpperCase();
             while ("Y".equals(lavMedlem)){ 
             try {       
                 System.out.println("Navn: ");
@@ -100,23 +100,26 @@ public class OpretMedlem {
                     
                 System.out.println("Adresse: ");
                     input.nextLine();
-                    String adresse = input.nextLine();
+                    String adresse = input.nextLine().toLowerCase();
                     pstmt.setString(4, adresse);
                     
                 System.out.println("Postnummer og By: ");
-                    String postNr_By = input.nextLine();
+                    String postNr_By = input.nextLine().toLowerCase();
                     pstmt.setString(5, postNr_By);
                     
                 System.out.println("Mobilnummer: ");
                     int mobilNr = input.nextInt();
+                    input.nextLine();
                     pstmt.setInt(6, mobilNr);
                     
                 System.out.println("Beskæftigelse: ");
-                    //input.nextLine();
-                    String beskæftigelse = input.nextLine();
-                        if ("Konkurrence".equals(beskæftigelse) && alder<=18){
+                String beskæftigelse;
+                beskæftigelse = input.nextLine().toLowerCase();
+                        if ("konkurrence".equals(beskæftigelse) && alder<=18){
+
                             System.out.println("Hvilken disciplin svømmer du: \n   (Crawl, Ryg, Butterfly eller Bryst)");
                             String disciplin = input.nextLine();
+                            disciplin = disciplin.substring(0,1).toUpperCase()+disciplin.substring(1).toLowerCase();
                             pstmt1.setString(1, navn);
                                 pstmt4.setString(1, navn);
                                 pstmt5.setString(1, navn);
@@ -138,9 +141,10 @@ public class OpretMedlem {
                                 pstmt5.close();
                                 pstmt6.close();
                             
-                        } else if ("Konkurrence".equals(beskæftigelse) && alder>18){
+                        } else if ("konkurrence".equals(beskæftigelse) && alder>18){
                             System.out.println("Hvilken disciplin svømmer du: \n   (Crawl, Ryg, Butterfly eller Bryst)");
                             String disciplin = input.nextLine();
+                            disciplin = disciplin.substring(0,1).toUpperCase()+disciplin.substring(1).toLowerCase();
                             pstmt2.setString(1, navn);
                                 pstmt4.setString(1, navn);
                                 pstmt5.setString(1, navn);
@@ -166,6 +170,7 @@ public class OpretMedlem {
                     
                 System.out.println("Aktivt eller passivt medlemskab: ");
                     String A_eller_P = input.nextLine();
+                    A_eller_P = A_eller_P.substring(0,1).toUpperCase()+A_eller_P.substring(1).toLowerCase();
                     int beløb;
                     if ("Aktivt".equals(A_eller_P)){
                         if (alder>=0 && alder<18){
@@ -189,7 +194,7 @@ public class OpretMedlem {
                     pstmt.setString(8, A_eller_P);  
                     
                 System.out.println("Vil du betale nu eller senere? (N/S)");
-                    String betal = input.nextLine();
+                    String betal = input.nextLine().toUpperCase();
                     if ("N".equals(betal)){
                         if ("Aktivt".equals(A_eller_P) && alder>=0 && alder<18){
                            System.out.println("Du har nu betalt 1000 kr."); 
@@ -217,10 +222,12 @@ public class OpretMedlem {
                     pstmt.executeUpdate();
                     pstmt.close();
                     break;
+                        
             } catch (Exception e) {
                     e.printStackTrace(System.out);
             }
             } 
         return medlemmer;
     }
+
 }

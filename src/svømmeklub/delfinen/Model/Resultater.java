@@ -16,7 +16,7 @@ public class Resultater {
 
     @Override
     public String toString() {
-        return navn + " !!! " + disciplin + " !!! " + sum + "\n";
+        return String.format("%-20s%-10s%15.2f\n", navn, disciplin, sum);
     }
     
     

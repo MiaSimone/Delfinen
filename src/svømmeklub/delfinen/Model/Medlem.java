@@ -105,11 +105,7 @@ public class Medlem {
 
     @Override
     public String toString() {
-        String mellemrum = "\n";
-        return "Navn: " + navn + "\n" +
-               "Alder: " + alder + "\n" +
-               "Medlemskabs status: " + medlemskabsStatus + "\n" +
-               "Beskæftigelse: " + beskæftigelse + mellemrum + mellemrum;
+        return String.format("%-25s%-10d%-23s%-20s\n", navn, alder, medlemskabsStatus, beskæftigelse);
     }
     
     

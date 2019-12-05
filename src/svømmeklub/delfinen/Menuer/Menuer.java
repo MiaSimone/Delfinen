@@ -16,6 +16,21 @@ public class Menuer {
     Scanner input = new Scanner(System.in);  
     public int exitValue = 9;
     public int choice = 0;
+    
+    String navn = "Navn:";
+    String alder = "Alder:";
+    String medlem = "Medlemskabsstatus:";
+    String beskæftigelse = "Beskæftigelse:";
+    String disciplin = "Disciplin:";
+    String JellerS = "Junior/Senior:";
+    String tid = "Tid:";
+    String stævne = "Stævne:";
+    String placering = "Placering";
+    String tResID = "ID:";
+    String dato = "Dato:";
+    String mobilNr = "Mobil nummer:";
+    String beløb = "Beløb";
+    
 // Valg 1 i hovedmenu:
     public void valg1() throws SQLException, ClassNotFoundException{
         while (choice != exitValue){
@@ -26,6 +41,7 @@ public class Menuer {
                     oM.opretMedlem();
                     break;
                 case 2:
+                    System.out.printf("%-25s%-10s%-23s%-20s\n", navn, alder, medlem, beskæftigelse);
                     seMedlemmer();
                     break;
                 default:
@@ -45,9 +61,11 @@ public class Menuer {
 
             switch(choice){
                 case 1:
+                    System.out.printf("%-25s%-10s%-20s%-20s\n", navn, alder, JellerS, disciplin);
                     seHold1();
                     break;
                 case 2:
+                    System.out.printf("%-25s%-10s%-20s%-20s\n", navn, alder, JellerS, disciplin);
                     seHold2();
                     break;
                 default:
@@ -62,9 +80,10 @@ public class Menuer {
     
 // Valg 3 i hovedmenu:
     public void valg3() throws SQLException, ClassNotFoundException{
+        System.out.printf("%-25s%-20s%-10s\n", navn, mobilNr, beløb);
         seRestance();
     }
-    
+   
 // Valg 4 i hovedmenu:    
     public void valg4() throws ClassNotFoundException, SQLException{
         while (choice != exitValue){
@@ -76,6 +95,8 @@ public class Menuer {
                     while (J_eller_S != exitValue){
                         switch (J_eller_S){
                             case 1:
+                                System.out.printf("%-20s%-10s%15s\n", navn, disciplin, tid);
+                                
                                 seJuniorResultater();
                                 break;
                             case 2:
@@ -93,6 +114,7 @@ public class Menuer {
                     
              // Hvis man vælger stævnerresultater     
                 case 2:
+                    System.out.printf("%-25s%-25s%-20s%-20s%-15s\n", navn, stævne, placering, disciplin, tid);        
                     seStævner();
                     break;
              // Hvis man vælger træningsresultater        
@@ -101,9 +123,11 @@ public class Menuer {
                     while (valg != exitValue){
                         switch (valg){
                             case 1:
+                                System.out.printf("%-7s%-25s%-20s%-20s%-15s\n", tResID, navn, dato, disciplin, tid);
                                 seTræning();
                                 break;
                             case 2:
+                                System.out.printf("%-7s%-25s%-20s%-20s%-15s\n", tResID, navn, dato, disciplin, tid);
                                 Rediger_træningsresultater rt = new Rediger_træningsresultater();
                                 rt.rediger();
                                 break;

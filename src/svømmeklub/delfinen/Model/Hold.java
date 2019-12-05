@@ -17,11 +17,7 @@ public class Hold{
 
     @Override
     public String toString() {
-        String mellemrum = "\n";
-        return "Navn: " + navn + "\n" +
-               "Alder: " + alder + "\n" +
-               "Junior eller seniorsvømmer: " + JellerS + "\n" +
-               "Disciplin: " + disciplin + mellemrum + mellemrum;
+        return String.format("%-25s%-10d%-20s%-20s\n", navn, alder, JellerS, disciplin);
     }
 
     
